@@ -45,3 +45,15 @@ hr {
     width: 300px;
   }
 }
+
+.ballContainer{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.ball {
+  width: 112px;
+  height: 112px;
+  padding: 10px;
+}

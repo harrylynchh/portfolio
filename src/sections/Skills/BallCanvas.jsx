@@ -44,28 +44,28 @@ const Ball = ({ imgUrl, color }) => {
         flatShading
       /> */}
       {/* Fourth Decal */}
-      {/* <Decal
+      <Decal
         position={[0, -1, 0]}
         rotation={[-Math.PI / 2, 0, 6.25]}
         scale={1}
         map={decal}
         flatShading
-      /> */}
+      />
       {/* Fifth Decal */}
-      {/* <Decal
+      <Decal
         position={[1, 0, 0]}
         rotation={[0, Math.PI / 2, 6.25]}
         scale={1}
         map={decal}
         flatShading
-      /> */}
-      {/* <Decal
+      />
+      <Decal
         position={[-1, 0, 0]}
         rotation={[0, -Math.PI / 2, 6.25]} // Adjusted rotation
         scale={1}
         map={decal}
         flatShading
-      /> */}
+      />
       </mesh>
     </Float>
   )
@@ -91,4 +91,4 @@ const BallCanvas = ({ icon, ballColor }) => {
   );
 };
 
-export {BallCanvas}
+export default BallCanvas
