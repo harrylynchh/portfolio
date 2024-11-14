@@ -11,7 +11,6 @@ function App() {
       <Hero />
       <Projects />
       <SkillsBalls />
-      <Footer />
     </>
   );
 }

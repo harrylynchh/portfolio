@@ -9,7 +9,7 @@ import CanvasLoader from './Loader.jsx'
 const Ball = ({ imgUrl, color }) => {
   const [decal] = useTexture([imgUrl]);
   return (
-    <Float speed={0.5} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={0.01} rotationIntensity={0.01} floatIntensity={0.5}>
       <ambientLight intensity={1.5} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
@@ -36,13 +36,13 @@ const Ball = ({ imgUrl, color }) => {
         flatShading
       />
       {/* Third Decal */}
-      {/* <Decal
+      <Decal
         position={[0, 1, 0]}
         rotation={[Math.PI / 2, 0, 6.25]}
         scale={1}
         map={decal}
         flatShading
-      /> */}
+      />
       {/* Fourth Decal */}
       <Decal
         position={[0, -1, 0]}

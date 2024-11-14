@@ -9,9 +9,14 @@ function SkillsBalls() {
       <h1 className="sectionTitle">Skills</h1> 
       <div className={style.ballContainer}>
         {technologies.map((technology) => { return (
-            <div className={style.ball}key={technology.name}>
+          <div className={style.skillWrapper} key={technology.name}>
+            <div className={style.text}>
+              <p>{technology.name}</p>
+            </div>
+            <div className={style.ball} key={technology.name}>
                 <BallCanvas icon={technology.icon} ballColor={technology.color}/>
             </div>
+          </div>
         )})}
       </div>
     </section>
