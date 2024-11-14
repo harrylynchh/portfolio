@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import style from './SkillsStyles.module.css';
 import { useTheme } from '../../common/ThemeContext';
 import BallCanvas from "./BallCanvas.jsx";
