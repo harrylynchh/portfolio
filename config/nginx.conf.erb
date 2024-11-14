@@ -1,0 +1,29 @@
+worker_processes 1;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    server {
+        listen ${PORT};  # Heroku will automatically map to the correct port
+
+        # Root directory where static files are located
+        root /app/dist;
+        index index.html;
+
+        # Serve static files (adjust path as necessary)
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        # Error page handling (can be customized as needed)
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;
+        }
+    }
+}
