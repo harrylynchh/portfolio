@@ -1,1 +1,1 @@
-web: bin/start-nginx-solo
+web: env PORT=$PORT nginx -c /app/nginx.conf
