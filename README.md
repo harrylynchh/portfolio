@@ -1,8 +1,22 @@
-# React + Vite
+# Personal Portfolio Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech
+- [JavaScript]
+  - [React] - Frontend Framework
+  - [Vite] - Build tool
+  - [Vercel Serve] - Node package used to serve final html to client
+  - [NodeJS] - JS Runtime
+  - [ThreeJS] - 3D Art/Canvases
+- [Heroku] - Hosting Service
 
-Currently, two official plugins are available:
+### Main Features:
+- Links to all major social media platforms
+- Dark/Light Mode
+- Resume ready to download
+- 3D Display of Tech Stack which is easily altered (see enum.js)
+- Help get me hired (hopefully)
+### TODO:
+- About me section
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
