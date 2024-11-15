@@ -7,7 +7,10 @@ function SkillsBalls() {
   const { theme } = useTheme();
   return (
     <section id="skills" className={style.container}>
-      <h1 className="sectionTitle">Skills</h1> 
+      <div className='sectionTitle'>
+        <h1>Skills</h1>
+        <h2>Languages and Frameworks</h2> 
+      </div>
       <div className={style.ballContainer}>
         {technologies.map((technology) => { return (
           <div className={style.skillWrapper} key={technology.name}>

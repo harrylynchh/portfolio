@@ -39,7 +39,7 @@ const technologies = [
 	{
 		name: "SQL",
 		icon: sql,
-		color: "$ffffff",
+		color: "#ffffff",
 	},
 	{
 		name: "HTML",
@@ -52,11 +52,6 @@ const technologies = [
 		color: "#0080c3",
 	},
 	{
-		name: "Figma",
-		icon: figma,
-		color: "#546072",
-	},
-	{
 		name: "C",
 		icon: c,
 		color: "#0154a7",
@@ -65,11 +60,6 @@ const technologies = [
 		name: "React JS",
 		icon: reactjs,
 		color: "#001e4a",
-	},
-	{
-		name: "git",
-		icon: git,
-		color: "#000000",
 	},
 	{
 		name: "Amazon Web Services",
@@ -95,6 +85,16 @@ const technologies = [
 		name: "Tailwind CSS",
 		icon: tailwind,
 		color: "#8dcdc3",
+	},
+	{
+		name: "Figma",
+		icon: figma,
+		color: "#546072",
+	},
+	{
+		name: "git",
+		icon: git,
+		color: "#000000",
 	},
 ];
 export { technologies };
