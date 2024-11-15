@@ -16,7 +16,7 @@ const Ball = ({ imgUrl, color }) => {
       <ambientLight intensity={1.5} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
-        <icosahedronGeometry args={[1, 1]} />
+        <icosahedronGeometry args={[1, 3]} />
         <meshStandardMaterial
           color={color}
           polygonOffset
