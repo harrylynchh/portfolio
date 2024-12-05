@@ -1,9 +1,7 @@
 import styles from './ProjectsStyles.module.css';
-import bostont from '../../assets/bostont.png';
+import portfolio from '../../assets/portfolio.png';
 import airtight from '../../assets/airtight.png';
-import huffman from '../../assets/huffman.png';
-import hipsster from '../../assets/hipsster.png';
-import rpncalc from '../../assets/rpncalc.png';
+import cpp from '../../assets/cppIcon.png';
 import ProjectCard from '../../common/ProjectCard';
 
 function Projects() {
@@ -12,29 +10,25 @@ function Projects() {
       <h1 className="sectionTitle">Projects</h1>
       <div className={styles.projectsContainer}>
         <ProjectCard
+          src={portfolio}
+          link="https://github.com/harrylynchh/portfolio"
+          h3="My Portfolio Site"
+          p="This Portfolio Site with React, 3JS, and Node"
+        />
+
+        <ProjectCard
           src={airtight}
           link="https://github.com/harrylynchh/airtight-container"
           h3="Container Inventory"
           p="Web-Based Container Software with PERN Stack"
+          gold={true}
         />
+        
         <ProjectCard
-          src={huffman}
-          link="https://github.com/harrylynchh/Huffman-Encoder-Decoder"
-          h3="Huffman Coder"
-          p="Lossless Text Compression in C++"
-        />
-        <ProjectCard
-          src={rpncalc}
-          link="https://github.com/harrylynchh/RPNCalculator"
-          h3="RPN Calculator"
-          p="Turing Complete Reverse Polish Notation Calculator in C++"
-          rpnCalc={true}
-        />
-        <ProjectCard
-          src={bostont}
-          link="https://github.com/harrylynchh/MetroSimulator"
-          h3="Metro Simulator"
-          p="Boston T Train Simulator in C++"
+          src={cpp}
+          link="https://github.com/harrylynchh/cppProjectDetails"
+          h3="C++ Projects"
+          p="Projects in Data Structures & Algorithms."
         />
       </div>
     </section>

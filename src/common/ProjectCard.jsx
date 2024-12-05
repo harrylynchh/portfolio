@@ -3,9 +3,9 @@
 import React from 'react';
 import style from '../sections/Projects/ProjectsStyles.module.css';
 import { Tilt } from 'react-tilt'
-function ProjectCard({ src, link, h3, p, rpnCalc }) {
+function ProjectCard({ src, link, h3, p, gold }) {
   let txtStyle;
-  rpnCalc ? txtStyle = style.rpnCalc : txtStyle  = style.description;
+  gold ? txtStyle = style.gold : txtStyle  = style.projTxt;
   const tiltOptions = {
     reverse:        false,  // reverse the tilt direction
     max:            0.5,     // max tilt rotation (degrees)
@@ -23,8 +23,8 @@ function ProjectCard({ src, link, h3, p, rpnCalc }) {
         <a href={link} target="_blank">
           <img src={src} alt={`${h3} logo`} />
           <div className={style.textDiv}>
-            <span className={style.textWrapper}><h3 className={style.projTxt}>{h3}</h3></span>
-            <span className={style.textWrapper}><p className={txtStyle}>{p}</p></span>
+            <span className={style.textWrapper}><h3 className={txtStyle}>{h3}</h3></span>
+            <span className={style.textWrapper}><p className={style.description}>{p}</p></span>
           </div>
         </a>
       </div>
