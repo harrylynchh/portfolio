@@ -1,8 +1,14 @@
-# React + Vite
+# Personal Portfolio Site
+- https://www.harrylynch.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech
 
-Currently, two official plugins are available:
+- [React] - Frontend Framework
+- [Node.js] - Runtime environment (npm for package management)
+  -[3JS] - 3-Dimensional Canvas package used to generate the "skills" spheres
+- [Heroku] - hosted through heroku
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Main Features:
+- Contact information / resume download.
+- Showcases completed projects and my skills
+- (Hopefully) get me hired
