@@ -8,7 +8,7 @@ import emailLight from '../../assets/email-light.png';
 import emailDark from '../../assets/email-dark.png';
 import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
-import CV from '../../assets/harry_lynch_resume.pdf';
+import CV from '../../assets/harry_lynch_resume_12-19.pdf';
 import { useTheme } from '../../common/ThemeContext';
 
 function Hero() {
