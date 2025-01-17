@@ -1,70 +1,70 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
 
-  img {
-    max-width: 250px;
-    align-self: center;
-    background-color: var(--project-card-bg);
-    border-radius: 20px;
-  }
+	img {
+		max-width: 250px;
+		align-self: center;
+		background-color: var(--project-card-bg);
+		border-radius: 20px;
+	}
 
-  a {
-    width: fit-content;
-    text-decoration: none;
-    color: #222;
-    transition: transform 200ms ease-in-out;
-  }
+	a {
+		width: fit-content;
+		text-decoration: none;
+		color: #222;
+		transition: transform 200ms ease-in-out;
+	}
 
-  a:hover {
-    transform: scale(1.05);
-  }
+	a:hover {
+		transform: scale(1.05);
+	}
 }
 
 .projectsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
 }
 
 @media (width >= 800px) {
-  .projectsContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 0 30px;
-  }
+	.projectsContainer {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		padding: 0 30px;
+	}
 }
 
-.projTxt{
-  max-width: 20ch;
-  font-size: 19.5px;
-  text-align: center;
+.projTxt {
+	max-width: 20ch;
+	font-size: 19.5px;
+	text-align: center;
 }
-.description{
-  font-size: 17px;
-  max-width: 24ch;
-  text-align: center;
+.description {
+	font-size: 17px;
+	max-width: 24ch;
+	text-align: center;
 }
-.rpnCalc{
-  font-size: 17px;
-  max-width: 30ch;
-  text-align: center;
+.rpnCalc {
+	font-size: 17px;
+	max-width: 30ch;
+	text-align: center;
 }
 .gold {
-  max-width: 20ch;
-  font-size: 19.5px;
-  text-align: center;
-  color: gold !important;
+	max-width: 20ch;
+	font-size: 19.5px;
+	text-align: center;
+	color: gold !important;
 }
-.textWrapper{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.textWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 }
-.textDiv{
-  padding-top: 6px;
+.textDiv {
+	padding-top: 6px;
 }
