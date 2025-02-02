@@ -10,7 +10,7 @@ import linkedinLight from "../../assets/linkedin-light.svg";
 import linkedinDark from "../../assets/linkedin-dark.svg";
 import downarrowLight from "../../assets/downarrow-light.png";
 import downarrowDark from "../../assets/downarrow-dark.png";
-import CV from "../../assets/harry_lynch_resume_1-6-2025.pdf";
+import CV from "../../assets/harry_lynch_resume_2-2-2025.pdf";
 import { useTheme } from "../../common/ThemeContext";
 
 function Hero() {
