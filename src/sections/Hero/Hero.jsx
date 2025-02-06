@@ -10,7 +10,7 @@ import linkedinLight from "../../assets/linkedin-light.svg";
 import linkedinDark from "../../assets/linkedin-dark.svg";
 import downarrowLight from "../../assets/downarrow-light.png";
 import downarrowDark from "../../assets/downarrow-dark.png";
-import CV from "../../assets/harry_lynch_resume_2-2-2025.pdf";
+import CV from "../../assets/harry_lynch_resume_2-5-2025.pdf";
 import { useTheme } from "../../common/ThemeContext";
 
 function Hero() {
@@ -73,8 +73,8 @@ function Hero() {
 						passionate about software development.
 						<br />
 						<br />
-						Please reach out through the above resources if you'd
-						like to connect!
+						Please reach out through the above resources if
+						you&apos;d like to connect!
 					</p>
 					<a href={CV} download>
 						<button className="hover">Résumé</button>
