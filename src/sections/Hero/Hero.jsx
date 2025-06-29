@@ -62,7 +62,7 @@ function Hero() {
 							<img src={emailIcon} alt="Email icon" />
 						</a>
 						<a
-							href="https://www.linkedin.com/in/harry-lynch-5350992a8/"
+							href="https://www.linkedin.com/in/harry-lynch"
 							target="_blank"
 						>
 							<img src={linkedinIcon} alt="Linkedin icon" />
