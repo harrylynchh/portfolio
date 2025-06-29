@@ -2,6 +2,7 @@ import styles from "./ProjectsStyles.module.css";
 import portfolio from "../../assets/portfolio.png";
 import airtight from "../../assets/airtight.png";
 import cpp from "../../assets/cppIcon.png";
+import python from "../../assets/pythonIcon.png";
 import ProjectCard from "../../common/ProjectCard";
 
 function Projects() {
@@ -21,14 +22,20 @@ function Projects() {
 					link="https://github.com/harrylynchh/airtight-container"
 					h3="Container Inventory"
 					p="Web-Based Container Software with PERN Stack"
-					gold={true}
 				/>
 
 				<ProjectCard
 					src={cpp}
 					link="https://github.com/harrylynchh/c-cppProjectDetails"
-					h3="C/C++ Projects"
-					p="Projects in Data Structures & Algorithms."
+					h3="ASM/C/C++ Projects"
+					p="Low-level DS&A Projects and Emulator/ASM work"
+				/>
+
+				<ProjectCard
+					src={python}
+					link="https://github.com/harrylynchh/c-cppProjectDetails"
+					h3="AI Python Projects"
+					p="From-scratch AI/ML implementations"
 				/>
 			</div>
 		</section>
