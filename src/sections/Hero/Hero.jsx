@@ -69,14 +69,14 @@ function Hero() {
 						</a>
 					</span>
 					<p className={styles.description}>
-						Sophomore Computer Science Student at Tufts University
+						Junior Computer Science Student at Tufts University
 						passionate about software development.
 						<br />
 						<br />
 						Please reach out through the above resources if
 						you&apos;d like to connect!
 					</p>
-					<a href={CV} download>
+					<a href={CV} target="blank">
 						<button className="hover">Résumé</button>
 					</a>
 				</div>
