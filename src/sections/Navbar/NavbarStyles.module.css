@@ -1,0 +1,114 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(var(--bg-rgb), 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: background 250ms ease;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (width >= 800px) {
+  .inner {
+    padding: 0 60px;
+  }
+}
+
+@media (width >= 1400px) {
+  .inner {
+    padding: 0 80px;
+  }
+}
+
+/* ---- logo ---- */
+
+.logo {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+/* ---- links ---- */
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (width >= 500px) {
+  .links {
+    gap: 16px;
+  }
+}
+
+@media (width >= 800px) {
+  .links {
+    gap: 28px;
+  }
+}
+
+.links button {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+  /* hide on very small screens */
+  display: none;
+}
+
+@media (width >= 500px) {
+  .links button {
+    display: block;
+  }
+}
+
+.links button:hover {
+  color: var(--text);
+}
+
+/* ---- résumé pill ---- */
+
+.resume {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent-border);
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 180ms ease;
+  white-space: nowrap;
+}
+
+.resume:hover {
+  background: var(--accent-muted);
+}

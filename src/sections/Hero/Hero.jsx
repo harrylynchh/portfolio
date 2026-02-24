@@ -26,8 +26,8 @@ function Hero() {
 		const el = document.getElementById("projects");
 		if (el) {
 			el.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
 	};
+  }
 	return (
 		<section className={styles.heroWrapper}>
 			<section id="hero" className={styles.container}>
@@ -35,7 +35,7 @@ function Hero() {
 					<img
 						src={heroImg}
 						className={styles.hero}
-						alt="Profile picture of Harris Johnsen"
+						alt="Profile picture of Harry Lynch"
 					/>
 					<img
 						className={styles.colorMode}
@@ -69,7 +69,7 @@ function Hero() {
 						</a>
 					</span>
 					<p className={styles.description}>
-						Junior Computer Science Student at Tufts University
+						Junior Computer Science Student at Tufts University and incoming SWE Intern at Bloomberg
 						passionate about software development.
 						<br />
 						<br />

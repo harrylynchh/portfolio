@@ -1,70 +1,193 @@
 .container {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-
-	img {
-		max-width: 250px;
-		align-self: center;
-		background-color: var(--project-card-bg);
-		border-radius: 20px;
-	}
-
-	a {
-		width: fit-content;
-		text-decoration: none;
-		color: #222;
-		transition: transform 200ms ease-in-out;
-	}
-
-	a:hover {
-		transform: scale(1.05);
-	}
-}
-
-.projectsContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 30px;
+  padding: 80px 24px;
 }
 
 @media (width >= 800px) {
-	.projectsContainer {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-		padding: 0 30px;
-	}
+  .container {
+    padding: 100px 60px;
+  }
 }
 
-.projTxt {
-	max-width: 20ch;
-	font-size: 19.5px;
-	text-align: center;
+@media (width >= 1400px) {
+  .container {
+    padding: 120px 80px;
+  }
 }
+
+/* ---- grid ---- */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (width >= 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1100px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---- card ---- */
+
+.card {
+  padding: 32px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background 220ms ease;
+}
+
+@media (width >= 800px) {
+  /* 2-col: right border on odd cards, bottom border between rows */
+  .card:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+  .card:nth-child(1),
+  .card:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (width >= 1100px) {
+  /* 4-col: reset 2-col rules, add right border on first 3 */
+  .card:nth-child(odd) {
+    border-right: none;
+  }
+  .card:nth-child(1),
+  .card:nth-child(2) {
+    border-bottom: none;
+  }
+  .card:not(:last-child) {
+    border-right: 1px solid var(--border);
+  }
+}
+
+@media (width < 800px) {
+  .card:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* animated top-bar on hover */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms ease;
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  background: var(--accent-muted);
+}
+
+/* ---- card internals ---- */
+
+.num {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+}
+
+.award {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: #f0b429;
+  background: rgba(240, 180, 41, 0.1);
+  border: 1px solid rgba(240, 180, 41, 0.3);
+  border-radius: 3px;
+  padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1.5;
+  align-self: flex-start;
+}
+
+.trophy {
+  font-size: 11px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.name {
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 800;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+@media (width >= 800px) {
+  .name {
+    font-size: 18px !important;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tagIcon {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .description {
-	font-size: 17px;
-	max-width: 24ch;
-	text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px !important;
+  line-height: 1.8;
+  color: var(--text-muted);
+  flex: 1;
+  font-weight: 400;
 }
-.rpnCalc {
-	font-size: 17px;
-	max-width: 30ch;
-	text-align: center;
+
+.link {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: letter-spacing 250ms ease;
+  align-self: flex-start;
+  margin-top: 4px;
 }
-.gold {
-	max-width: 20ch;
-	font-size: 19.5px;
-	text-align: center;
-	color: gold !important;
-}
-.textWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-}
-.textDiv {
-	padding-top: 6px;
+
+.link:hover {
+  letter-spacing: 0.14em;
 }

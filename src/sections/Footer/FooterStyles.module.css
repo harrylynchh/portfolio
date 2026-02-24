@@ -1,7 +1,80 @@
-.container {
+.footer {
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 56px;
+}
+
+.inner {
+  padding: 64px 24px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   text-align: center;
-  p {
-    font-size: 16px;
-    color: var(--footer-text-color);
+}
+
+@media (width >= 800px) {
+  .inner {
+    padding: 80px 60px 88px;
   }
+}
+
+.label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px !important;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.emailLink {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 180ms ease;
+}
+
+.emailLink:hover {
+  color: var(--accent);
+}
+
+@media (width >= 800px) {
+  .emailLink {
+    font-size: 22px;
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.icons a img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 180ms ease;
+}
+
+.icons a:hover img {
+  opacity: 1;
+}
+
+.copy {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 0.08em;
+  margin-top: 12px;
 }
