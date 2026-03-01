@@ -1,5 +1,5 @@
 import styles from './NavbarStyles.module.css';
-import CV from '../../assets/harry_lynch_resume_6-29-2025.pdf';
+import CV from '../../assets/harry_lynch_resume.pdf';
 
 const links = [
   { label: 'About', target: 'hero' },

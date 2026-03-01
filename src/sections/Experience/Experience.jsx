@@ -5,6 +5,13 @@ import crumforsterLogo from '../../assets/experience_logos/crum_and_forster.png'
 import launchLogo from '../../assets/experience_logos/launch.png';
 import airtightLogo from '../../assets/experience_logos/airtight.png';
 
+function renderBullet(text) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i} className={styles.accent}>{part}</strong> : part
+  );
+}
+
 const jobs = [
   {
     company: 'Bloomberg LP',
@@ -20,11 +27,12 @@ const jobs = [
     logo: crumforsterLogo,
     role: 'Data Science / Software Engineering Intern',
     location: 'Morristown, NJ',
-    date: 'May 2025 – Present',
+    date: 'May 2025 – Nov 2025',
     bullets: [
-      'Built production ETL pipelines in Python ingesting 50k+ rows/month into SQL Server with T-SQL stored procedures.',
-      'Re-engineered a government filing workflow from a 1+ hour manual process to a 6-parameter CLI script completing in under 10 seconds.',
-      'Designed a RESTful API layer with C# / ASP.NET Core & Entity Framework to supplement internal dashboards.',
+      'Independently delivered **15+ production projects** impacting **6 divisions**, consulting with non-technical stakeholders across Actuarial, Claims, Audit, Underwriting, Accounting, and Marketing.',
+      'Built Python **ETL pipelines** to ingest, clean, and load **50k+ rows** of Excel data monthly into **SQL Server** via T-SQL stored procedures.',
+      'Re-engineered a **statutory government filing model** from a 7-tab Excel workflow into a **6-parameter Python CLI** with parallelized SQL queries, producing a submission-ready workbook in **under 10 seconds** (from 1+ hours).',
+      'Shipped features across a **C#/.NET, SQL Server, and Angular** stack — RESTful API endpoints, front-end UI, and database optimizations.',
     ],
   },
   {
@@ -34,9 +42,9 @@ const jobs = [
     location: 'Medford, MA',
     date: 'Jan 2025 – May 2025',
     bullets: [
-      'Designed and implemented a multi-database ERD for company and product data with Postgres and MongoDB.',
-      'Developed and trained a custom AI agent to generate websites from scraped social media profiles.',
-      'Built an interface for end-users to drag-and-drop and customize generated website components.',
+      'Led a team of 5 interns on backend orchestration, independently designing a normalized **PostgreSQL** and **MongoDB** schema to model company, product, and user data across the full application.',
+      'Built a **RAG pipeline** using **Ollama** and scraped social media data to power a custom AI agent that auto-generates company websites from existing online profiles.',
+      'Developed a drag-and-drop **React** interface for end-users to customize AI-generated websites, rearranging and editing components in real time.',
     ],
   },
   {
@@ -46,8 +54,8 @@ const jobs = [
     location: 'Manalapan, NJ',
     date: 'May 2024 – Oct 2024',
     bullets: [
-      'Single-handedly designed, developed, and shipped a full-stack web app for inventory and sale management.',
-      'Implemented industry-specific invoice generation, transport documents, and internal communication tools.',
+      'Designed, developed, and maintained a **full-stack web app** for internal inventory and sale management, tracking **500+ containers/month** and cutting manual documentation time by **65%**.',
+      'Implemented **JWT authentication**, permission-based accounts, automated client emails, and industry-specific invoice generation; hosted live on **AWS EC2 & S3** for day-to-day corporate use.',
     ],
   },
 ];
@@ -80,7 +88,7 @@ function TimelineEntry({ job, index }) {
         {job.bullets.length > 0 && (
           <ul className={styles.bullets}>
             {job.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
+              <li key={i}>{renderBullet(b)}</li>
             ))}
           </ul>
         )}

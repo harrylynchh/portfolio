@@ -10,7 +10,7 @@ const projects = [
     award: 'JumboHack 2026 — Overall & Track Winner',
     tech: ['React', 'TypeScript', 'Python', 'PostgreSQL', 'Supabase', 'VSCode'],
     description:
-      'VSCode extension that logs student coding activity. Professors view per-function time and thrash metrics, replay full edit histories, and query an LLM for qualitative insights — all from a web dashboard. Diff-based storage keeps history reconstruction efficient.',
+      'VS Code extension capturing keystroke-level edit history with per-symbol metrics (thrash, churn, time-on-function). Flask API ingests editor flushes and pipes diffs into an LLM for qualitative insights. Backed by PostgreSQL via Supabase with a React professor dashboard featuring per-student analytics and a code-replay timeline.',
     link: 'https://github.com/Seth-Lupo/jumbohack2026',
   },
   {
@@ -18,16 +18,16 @@ const projects = [
     name: 'Container Inventory Software',
     tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'AWS'],
     description:
-      'Multi-tenant platform tracking 500+ containers/month, cutting manual documentation time by 65%. JWT auth, permission-based accounts, automated client emails, and industry-specific tooling. Hosted live on AWS EC2 & S3.',
+      'Full-stack app for Airtight Storage Systems tracking 500+ containers/month and cutting manual documentation time by 65%. JWT auth, permission-based accounts, automated client emails, and industry-specific invoice generation. Hosted live on AWS EC2 & S3 for day-to-day corporate use.',
     link: 'https://github.com/harrylynchh/airtight-container',
   },
   {
     num: '03',
     name: 'Naïve Bayesian Radar Classifier',
-    tech: ['Python', 'NumPy', 'Pandas'],
+    tech: ['Python', 'NumPy', 'Pandas', 'scikit-learn'],
     description:
-      'Multivariate Naïve Bayes model classifying radar traces as bird or aircraft from velocity-time data. Temporal and statistical feature engineering — 96% accuracy and 0.93 F1 on 10,000 unseen points.',
-    link: 'https://github.com/harrylynchh',
+      'Multivariate Naïve Bayes classifier distinguishing bird vs. aircraft radar traces from velocity-time data. Temporal and statistical feature engineering — 96% accuracy and 0.93 F1 on 10k unseen samples.',
+    link: 'https://github.com/harrylynchh/naive-bayes',
   },
   {
     num: '04',
@@ -50,14 +50,9 @@ function TechTag({ name }) {
   );
 }
 
-function ProjectCard({ project, index }) {
-  const ref = useScrollReveal();
+function ProjectCard({ project }) {
   return (
-    <div
-      ref={ref}
-      className={`reveal ${styles.card}`}
-      style={{ '--delay': `${index * 120}ms` }}
-    >
+    <div className={styles.card}>
       <span className={styles.num}>{project.num}</span>
       <h2 className={styles.name}>{project.name}</h2>
       {project.award && (
@@ -86,15 +81,16 @@ function ProjectCard({ project, index }) {
 
 function Projects() {
   const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal();
   return (
     <section id="projects" className={styles.container}>
       <div ref={headerRef} className="reveal">
         <p className="sectionLabel">What I&apos;ve Built</p>
         <h1 className="sectionTitle">Projects</h1>
       </div>
-      <div className={styles.grid}>
-        {projects.map((project, i) => (
-          <ProjectCard key={project.num} project={project} index={i} />
+      <div ref={gridRef} className={`reveal ${styles.grid}`}>
+        {projects.map((project) => (
+          <ProjectCard key={project.num} project={project} />
         ))}
       </div>
     </section>
