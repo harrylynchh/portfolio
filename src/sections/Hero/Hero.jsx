@@ -45,8 +45,8 @@ function Hero() {
 					</div>
 
 					<p className={styles.bio}>
-						<strong>I'm a Junior CS student at Tufts University</strong> and incoming
-						SWE intern at Bloomberg with interests in finance and mathematics.
+						<strong>I'm a rising Senior CS student at Tufts University</strong> and
+						SWE Intern at Bloomberg with interests in finance and mathematics.
 					</p>
 
 					<div className={styles.actions}>

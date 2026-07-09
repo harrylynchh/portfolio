@@ -15,18 +15,18 @@ const projects = [
   },
   {
     num: '02',
-    name: 'Container Inventory Software',
-    tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'AWS'],
+    name: 'Shipping Container Inventory Platform',
+    tech: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
     description:
-      'Full-stack app for Airtight Storage Systems tracking 500+ containers/month and cutting manual documentation time by 65%. JWT auth, permission-based accounts, automated client emails, and industry-specific invoice generation. Hosted live on AWS EC2 & S3 for day-to-day corporate use.',
+      'Sole engineer and operator of a live, revenue-generating inventory and invoicing platform (40K+ lines, 275+ tests) for a working shipping-container yard, tracking 248 containers and $657K in active inventory. Idempotent month-end billing engine derives storage charges across three billing modes into auditable, re-runnable invoices. Zero-touch GitHub Actions pipeline ships Docker images to EC2, backed by a transactional migration runner validating 25 schema migrations atomically.',
     link: 'https://github.com/harrylynchh/airtight-container',
   },
   {
     num: '03',
-    name: 'Naïve Bayesian Radar Classifier',
-    tech: ['Python', 'NumPy', 'Pandas', 'scikit-learn'],
+    name: 'Recursive Bayesian Radar-Trace Classifier',
+    tech: ['Python', 'NumPy', 'Pandas'],
     description:
-      'Multivariate Naïve Bayes classifier distinguishing bird vs. aircraft radar traces from velocity-time data. Temporal and statistical feature engineering — 96% accuracy and 0.93 F1 on 10k unseen samples.',
+      'Recursive Bayesian estimator built from scratch in NumPy, classifying radar tracks as bird vs. aircraft from 600-sample velocity time series by propagating a per-measurement posterior through a sticky-state transition matrix with NaN-robust updates. Rolling-volatility feature with Laplace-smoothed empirical likelihoods over a 12,000-measurement corpus, fused with speed via log-linear likelihood pooling, lifted held-out track accuracy from 9/10 to 10/10.',
     link: 'https://github.com/harrylynchh/naive-bayes',
   },
   {
