@@ -4,11 +4,14 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(var(--bg-rgb), 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  transition: background 250ms ease;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.nav.scrolled {
+  background: var(--bg);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .inner {
@@ -36,49 +39,52 @@
 /* ---- logo ---- */
 
 .logo {
-  font-family: 'Rubik', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   flex-shrink: 0;
+  transition: color 150ms ease;
+}
+
+.logo:hover {
+  color: var(--accent);
 }
 
 /* ---- links ---- */
 
 .links {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 6px;
 }
 
 @media (width >= 500px) {
   .links {
-    gap: 16px;
+    gap: 18px;
   }
 }
 
 @media (width >= 800px) {
   .links {
-    gap: 28px;
+    gap: 26px;
   }
 }
 
 .links button {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px 0;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 180ms ease;
+  transition: color 150ms ease;
   /* hide on very small screens */
   display: none;
 }
@@ -90,25 +96,26 @@
 }
 
 .links button:hover {
-  color: var(--text);
+  color: var(--ink);
 }
 
-/* ---- résumé pill ---- */
+/* ---- résumé link ---- */
 
 .resume {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink);
   text-decoration: none;
-  border: 1px solid var(--accent-border);
+  border: 1px solid var(--ink);
+  border-radius: 0;
   padding: 6px 14px;
-  border-radius: 4px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: background 180ms ease;
+  letter-spacing: 0.02em;
+  transition: background-color 150ms ease, color 150ms ease;
   white-space: nowrap;
 }
 
-.resume:hover {
-  background: var(--accent-muted);
+.resume:hover,
+.resume:focus-visible {
+  background: var(--ink);
+  color: var(--bg);
 }

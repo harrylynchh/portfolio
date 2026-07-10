@@ -1,11 +1,8 @@
 import styles from './ProjectsStyles.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { techIcons, techIconsDark } from '../../common/techIcons';
-import { useTheme } from '../../common/ThemeContext';
 
 const projects = [
   {
-    num: '01',
     name: 'JumBuddy',
     award: 'JumboHack 2026 — Overall & Track Winner',
     tech: ['React', 'TypeScript', 'Python', 'PostgreSQL', 'Supabase', 'VSCode'],
@@ -14,7 +11,6 @@ const projects = [
     link: 'https://github.com/Seth-Lupo/jumbohack2026',
   },
   {
-    num: '02',
     name: 'Shipping Container Inventory Platform',
     tech: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'AWS'],
     description:
@@ -22,7 +18,6 @@ const projects = [
     link: 'https://github.com/harrylynchh/airtight-container',
   },
   {
-    num: '03',
     name: 'Recursive Bayesian Radar-Trace Classifier',
     tech: ['Python', 'NumPy', 'Pandas'],
     description:
@@ -30,7 +25,6 @@ const projects = [
     link: 'https://github.com/harrylynchh/naive-bayes',
   },
   {
-    num: '04',
     name: 'Universal Machine Emulator',
     tech: ['C'],
     description:
@@ -39,33 +33,16 @@ const projects = [
   },
 ];
 
-function TechTag({ name }) {
-  const { theme } = useTheme();
-  const icon = (theme === 'dark' && techIconsDark[name]) ? techIconsDark[name] : techIcons[name];
-  return (
-    <span className={`tag ${styles.tag}`}>
-      {icon && <img src={icon} alt={name} className={styles.tagIcon} />}
-      {name}
-    </span>
-  );
-}
-
 function ProjectCard({ project }) {
   return (
-    <div className={styles.card}>
-      <span className={styles.num}>{project.num}</span>
+    <article className={styles.card}>
       <h2 className={styles.name}>{project.name}</h2>
-      {project.award && (
-        <span className={styles.award}>
-          <span className={styles.trophy}>🏆</span>
-          {project.award}
-        </span>
-      )}
-      <div className={styles.tags}>
+      {project.award && <span className={styles.award}>{project.award}</span>}
+      <ul className={styles.tech}>
         {project.tech.map((t) => (
-          <TechTag key={t} name={t} />
+          <li key={t}>{t}</li>
         ))}
-      </div>
+      </ul>
       <p className={styles.description}>{project.description}</p>
       <a
         href={project.link}
@@ -73,9 +50,9 @@ function ProjectCard({ project }) {
         rel="noreferrer"
         className={styles.link}
       >
-        View on GitHub →
+        code <span aria-hidden="true">↗</span>
       </a>
-    </div>
+    </article>
   );
 }
 
@@ -84,13 +61,13 @@ function Projects() {
   const gridRef = useScrollReveal();
   return (
     <section id="projects" className={styles.container}>
-      <div ref={headerRef} className="reveal">
+      <div ref={headerRef} className="reveal sectionHead">
         <p className="sectionLabel">What I&apos;ve Built</p>
         <h1 className="sectionTitle">Projects</h1>
       </div>
       <div ref={gridRef} className={`reveal ${styles.grid}`}>
         {projects.map((project) => (
-          <ProjectCard key={project.num} project={project} />
+          <ProjectCard key={project.name} project={project} />
         ))}
       </div>
     </section>

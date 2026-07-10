@@ -10,9 +10,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <div className="divider" />
       <Experience />
-      <div className="divider" />
       <Projects />
       <Footer />
     </>

@@ -1,113 +1,75 @@
-import styles from "./HeroStyles.module.css";
-import heroImg from "../../assets/Design uten navn.png";
-import sun from "../../assets/sun.svg";
-import moon from "../../assets/moon.svg";
-import githubLight from "../../assets/github-light.svg";
-import githubDark from "../../assets/github-dark.svg";
-import emailLight from "../../assets/email-light.png";
-import emailDark from "../../assets/email-dark.png";
-import linkedinLight from "../../assets/linkedin-light.svg";
-import linkedinDark from "../../assets/linkedin-dark.svg";
-import CV from "../../assets/harry_lynch_resume.pdf";
-import { useTheme } from "../../common/ThemeContext";
+import styles from './HeroStyles.module.css';
+import heroImg from '../../assets/Design uten navn.png';
+import { useTheme } from '../../common/ThemeContext';
 
 function Hero() {
 	const { theme, toggleTheme } = useTheme();
 
-	const themeIcon = theme === "light" ? sun : moon;
-	const emailIcon = theme === "light" ? emailLight : emailDark;
-	const githubIcon = theme === "light" ? githubLight : githubDark;
-	const linkedinIcon = theme === "light" ? linkedinLight : linkedinDark;
-
 	const navigateDown = () => {
-		const el = document.getElementById("experience");
-		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+		const el = document.getElementById('experience');
+		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
 
 	return (
 		<section className={styles.heroWrapper}>
 			<section id="hero" className={styles.hero}>
+				<span className={styles.eyebrow}>Portfolio</span>
 
-				{/* ── Left column ── */}
-				<div className={styles.left}>
-					<span className={styles.eyebrow}>Portfolio</span>
-
-					<div className={styles.nameWrap}>
-						<span className={styles.nameFirst}>Harry</span>
-						<span className={styles.nameLast}>Lynch</span>
+				<div className={styles.name}>
+					<div className={styles.lineMask}>
+						<span className={styles.lineInner}>Harry</span>
 					</div>
-
-					<div className={styles.rule} aria-hidden="true" />
-
-					<div className={styles.titleLine}>
-						Full Stack Developer
-						<span className={styles.cursor} aria-hidden="true" />
+					<div className={styles.lineMask}>
+						<span className={styles.lineInner}>
+							Lynch<span className={styles.stop}>.</span>
+						</span>
 					</div>
+				</div>
 
-					<p className={styles.bio}>
-						<strong>I'm a rising Senior CS student at Tufts University</strong> and
-						SWE Intern at Bloomberg with interests in finance and mathematics.
-					</p>
+				<div className={styles.bottom}>
+					<div className={styles.bottomRight}>
+						<img
+							src={heroImg}
+							className={styles.photo}
+							alt="Profile picture of Harry Lynch"
+						/>
 
-					<div className={styles.actions}>
-						<a href={CV} target="_blank" className={styles.btnResume}>
-							Résumé <span aria-hidden="true">↗</span>
-						</a>
-						<div className={styles.socials}>
+						<div className={styles.meta}>
+							<span>Full-stack engineer</span>
+							<span>SWE Intern @ Bloomberg</span>
+							<span>CS @ Tufts &apos;27</span>
+						</div>
+
+						<div className={styles.metaLinks}>
 							<a
-								className={styles.socialLink}
 								href="https://github.com/harrylynchh"
 								target="_blank"
-								aria-label="GitHub"
+								rel="noreferrer"
 							>
-								<img src={githubIcon} alt="" />
+								github
 							</a>
 							<a
-								className={styles.socialLink}
-								href="mailto:hlynch02@tufts.edu"
-								aria-label="Email"
-							>
-								<img src={emailIcon} alt="" />
-							</a>
-							<a
-								className={styles.socialLink}
 								href="https://www.linkedin.com/in/harry-lynch"
 								target="_blank"
-								aria-label="LinkedIn"
+								rel="noreferrer"
 							>
-								<img src={linkedinIcon} alt="" />
+								linkedin
 							</a>
+							<a href="mailto:hlynch02@tufts.edu">email</a>
+							<button
+								type="button"
+								className={styles.themeToggle}
+								onClick={toggleTheme}
+								aria-label="Toggle color mode"
+							>
+								{theme === 'light' ? 'dark' : 'light'}
+							</button>
 						</div>
 					</div>
 				</div>
 
-				{/* ── Vertical divider ── */}
-				<div className={styles.colDivider} aria-hidden="true" />
-
-				{/* ── Right column ── */}
-				<div className={styles.right}>
-					<div className={styles.avatarWrap}>
-						{/* Profile photo */}
-						<div className={styles.photoRing}>
-							<img
-								src={heroImg}
-								className={styles.photo}
-								alt="Profile picture of Harry Lynch"
-							/>
-						</div>
-
-						{/* Theme toggle */}
-						<button
-							className={styles.themeBtn}
-							onClick={toggleTheme}
-							aria-label="Toggle color mode"
-						>
-							<img src={themeIcon} alt="" />
-						</button>
-					</div>
-				</div>
-
-				</section>
+				<div className={styles.heroHairline} aria-hidden="true" />
+			</section>
 
 			{/* ── Scroll indicator ── */}
 			<button
@@ -115,8 +77,7 @@ function Hero() {
 				onClick={navigateDown}
 				aria-label="Scroll down"
 			>
-				<div className={styles.scrollBar} aria-hidden="true" />
-				<span>Scroll</span>
+				<span aria-hidden="true">↓</span>
 			</button>
 		</section>
 	);

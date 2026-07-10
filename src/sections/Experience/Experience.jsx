@@ -1,8 +1,5 @@
 import styles from './ExperienceStyles.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import bloombergLogo from '../../assets/experience_logos/bloomberg.png';
-import crumforsterLogo from '../../assets/experience_logos/crum_and_forster.png';
-import launchLogo from '../../assets/experience_logos/launch.png';
 
 function renderBullet(text) {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -11,10 +8,19 @@ function renderBullet(text) {
   );
 }
 
+function renderCompany(name) {
+  const match = name.match(/^(.*?)\s(\(.*\))$/);
+  if (!match) return name;
+  return (
+    <>
+      {match[1]} <span className={styles.startup}>{match[2]}</span>
+    </>
+  );
+}
+
 const jobs = [
   {
     company: 'Bloomberg LP',
-    logo: bloombergLogo,
     role: 'Software Engineer Intern – Buy-Side Compliance',
     location: 'New York, NY',
     date: 'June 2026 – Aug 2026',
@@ -26,7 +32,6 @@ const jobs = [
   },
   {
     company: 'Crum & Forster',
-    logo: crumforsterLogo,
     role: 'Software Engineer / Data Science Intern',
     location: 'Morristown, NJ',
     date: 'May 2025 – Nov 2025',
@@ -38,7 +43,6 @@ const jobs = [
   },
   {
     company: 'Launch (Startup)',
-    logo: launchLogo,
     role: 'Full Stack Software Engineer Intern',
     location: 'Medford, MA',
     date: 'Jan 2025 – May 2025',
@@ -50,28 +54,23 @@ const jobs = [
   },
 ];
 
-function TimelineEntry({ job, index }) {
+function JobRow({ job, index }) {
   const ref = useScrollReveal();
   return (
-    <div
+    <article
       ref={ref}
-      className={`reveal ${styles.entry}`}
-      style={{ '--delay': `${index * 120}ms` }}
+      className={`reveal ${styles.job}`}
+      style={{ '--delay': `${index * 80}ms` }}
     >
-      <div className={styles.dotCol}>
-        <div className={styles.dot} />
-        <div className={styles.line} />
+      <div className={styles.dateCol}>
+        <span className={`${styles.date} nums`}>{job.date}</span>
+        {job.current && <span className={styles.current}>Current</span>}
       </div>
-      <div className={styles.content}>
-        <div className={styles.topRow}>
-          <div className={styles.companyGroup}>
-            <img src={job.logo} alt={`${job.company} logo`} className={styles.logo} />
-            <h2 className={styles.company}>{job.company}</h2>
-            {job.current && <span className={styles.incomingBadge}>Current</span>}
-          </div>
-          <span className={styles.date}>{job.date}</span>
+      <div className={styles.body}>
+        <div className={styles.top}>
+          <h2 className={styles.company}>{renderCompany(job.company)}</h2>
         </div>
-        <div className={styles.subRow}>
+        <div className={styles.sub}>
           <span className={styles.role}>{job.role}</span>
           <span className={styles.location}>{job.location}</span>
         </div>
@@ -83,7 +82,7 @@ function TimelineEntry({ job, index }) {
           </ul>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -91,13 +90,13 @@ function Experience() {
   const headerRef = useScrollReveal();
   return (
     <section id="experience" className={styles.container}>
-      <div ref={headerRef} className="reveal">
+      <div ref={headerRef} className="reveal sectionHead">
         <p className="sectionLabel">Where I&apos;ve Worked</p>
         <h1 className="sectionTitle">Experience</h1>
       </div>
-      <div className={styles.timeline}>
+      <div className={styles.jobList}>
         {jobs.map((job, i) => (
-          <TimelineEntry key={job.company} job={job} index={i} />
+          <JobRow key={job.company} job={job} index={i} />
         ))}
       </div>
     </section>
