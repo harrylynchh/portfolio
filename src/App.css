@@ -1,28 +1,32 @@
 /* =========================================
    THEME TOKENS
-   Quiet Swiss — paper white + electric cobalt,
+   Quiet Swiss — paper white + forest green,
    strict inversion for dark. No distinct
    "surface" color; everything sits on --bg.
+   --swatch is the theme toggle's preview
+   square: the OTHER mode's background.
    ========================================= */
 
 [data-theme='light'] {
   --bg: #FBFBF9;
   --ink: #101014;
-  --accent: #2430E8;
-  --muted: #6E6E76;
-  --hairline: #E6E6E2;
+  --accent: #1E5C3A;
+  --muted: #6C7370;
+  --hairline: #E3E7E3;
+  --swatch: #0F1512;
 }
 
 [data-theme='dark'] {
-  --bg: #101014;
-  --ink: #F2F2EF;
-  --accent: #7C86FF;
-  --muted: #8A8A92;
-  --hairline: #26262C;
+  --bg: #0F1512;
+  --ink: #EFF2EE;
+  --accent: #6FBF8F;
+  --muted: #8B948D;
+  --hairline: #232B26;
+  --swatch: #FBFBF9;
 }
 
 :root {
-  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-body: 'Archivo', system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
 
@@ -85,16 +89,15 @@ p {
 
 h1 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(28px, 5vw, 44px);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 h2,
 h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
-  letter-spacing: -0.03em;
 }
 
 p {

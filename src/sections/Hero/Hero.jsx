@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import styles from './HeroStyles.module.css';
-import heroImg from '../../assets/Design uten navn.png';
+import heroImg from '../../assets/profile.png';
 import { useTheme } from '../../common/ThemeContext';
 
 function Hero() {
 	const { theme, toggleTheme } = useTheme();
+	const [flipping, setFlipping] = useState(false);
+	const targetMode = theme === 'light' ? 'dark' : 'light';
+
+	const handleToggle = () => {
+		setFlipping(true);
+		toggleTheme();
+	};
 
 	const navigateDown = () => {
 		const el = document.getElementById('experience');
@@ -58,11 +66,16 @@ function Hero() {
 							<a href="mailto:hlynch02@tufts.edu">email</a>
 							<button
 								type="button"
-								className={styles.themeToggle}
-								onClick={toggleTheme}
-								aria-label="Toggle color mode"
+								className={`${styles.themeToggle} ${flipping ? styles.flipping : ''}`}
+								onClick={handleToggle}
+								aria-label={`Switch to ${targetMode} mode`}
 							>
-								{theme === 'light' ? 'dark' : 'light'}
+								<span
+									className={styles.swatch}
+									aria-hidden="true"
+									onAnimationEnd={() => setFlipping(false)}
+								/>
+								{targetMode}
 							</button>
 						</div>
 					</div>

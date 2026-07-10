@@ -39,10 +39,10 @@
 .lineInner {
 	display: block;
 	font-family: var(--font-display);
-	font-weight: 700;
+	font-weight: 800;
 	font-size: clamp(72px, 14vw, 160px);
 	line-height: 0.9;
-	letter-spacing: -0.03em;
+	letter-spacing: -0.02em;
 	text-transform: uppercase;
 	color: var(--ink);
 	transform: translateY(0);
@@ -84,24 +84,22 @@
 	height: 140px;
 	object-fit: cover;
 	border-radius: 0;
-	filter: grayscale(1);
-	transition: filter 150ms ease;
-}
-
-.photo:hover {
-	filter: grayscale(0);
 }
 
 .meta {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	gap: 6px;
-	font-family: var(--font-mono);
-	font-size: 13px;
-	font-variant-numeric: tabular-nums;
+	gap: 4px;
 	color: var(--muted);
 	text-align: right;
+}
+
+.meta span {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	line-height: 1.6;
+	font-variant-numeric: tabular-nums;
 }
 
 .metaLinks {
@@ -129,6 +127,33 @@
 .metaLinks button:hover,
 .metaLinks button:focus-visible {
 	color: var(--accent);
+}
+
+/* ── Theme toggle: swatch + target-mode label ────── */
+.themeToggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	text-transform: lowercase;
+}
+
+.swatch {
+	width: 12px;
+	height: 12px;
+	flex-shrink: 0;
+	border: 1px solid currentColor;
+	border-radius: 0;
+	background: var(--swatch);
+}
+
+.flipping .swatch {
+	animation: swatchFlip 150ms ease;
+}
+
+@keyframes swatchFlip {
+	0%   { transform: scaleY(1); }
+	50%  { transform: scaleY(0); }
+	100% { transform: scaleY(1); }
 }
 
 /* ── Closing hairline ────────────────────────────── */

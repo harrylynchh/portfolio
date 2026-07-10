@@ -32,9 +32,9 @@
 
 .name {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(24px, 2.5vw, 28px);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--ink);
 }
