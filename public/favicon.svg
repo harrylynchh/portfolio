@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0c0c12"/>
+  <rect width="32" height="32" rx="6" fill="#3A2A1C"/>
   <text
     x="16"
     y="22.5"
@@ -8,6 +8,6 @@
     font-size="15"
     text-anchor="middle"
     letter-spacing="0.5"
-    fill="#5b8aff"
+    fill="#AAB56C"
   >HL</text>
 </svg>

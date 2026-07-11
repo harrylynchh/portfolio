@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './HeroStyles.module.css';
-import heroImg from '../../assets/profile.png';
+import heroImg from '../../assets/pfp_circle.png';
 import { useTheme } from '../../common/ThemeContext';
 
 function Hero() {
@@ -21,29 +21,29 @@ function Hero() {
 	return (
 		<section className={styles.heroWrapper}>
 			<section id="hero" className={styles.hero}>
-				<span className={styles.eyebrow}>Portfolio</span>
+				<div className={styles.nameRow}>
+					<div className={styles.name}>
+						<div className={styles.lineMask}>
+							<span className={styles.lineInner}>Harry</span>
+						</div>
+						<div className={styles.lineMask}>
+							<span className={styles.lineInner}>
+								Lynch<span className={styles.stop}>.</span>
+							</span>
+						</div>
+					</div>
 
-				<div className={styles.name}>
-					<div className={styles.lineMask}>
-						<span className={styles.lineInner}>Harry</span>
-					</div>
-					<div className={styles.lineMask}>
-						<span className={styles.lineInner}>
-							Lynch<span className={styles.stop}>.</span>
-						</span>
-					</div>
+					<img
+						src={heroImg}
+						className={styles.photo}
+						alt="Profile picture of Harry Lynch"
+					/>
 				</div>
 
 				<div className={styles.bottom}>
 					<div className={styles.bottomRight}>
-						<img
-							src={heroImg}
-							className={styles.photo}
-							alt="Profile picture of Harry Lynch"
-						/>
-
 						<div className={styles.meta}>
-							<span>Full-stack engineer</span>
+							<span>Backend Engineer (C++)</span>
 							<span>SWE Intern @ Bloomberg</span>
 							<span>CS @ Tufts &apos;27</span>
 						</div>

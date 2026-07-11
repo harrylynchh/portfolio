@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer id="footer" className={styles.footer}>
       <div className={styles.inner}>
-        <p className={styles.message}>Say hello.</p>
+        <p className={styles.message}>Contact me.</p>
 
         <a href="mailto:hlynch02@tufts.edu" className={styles.email}>
           hlynch02@tufts.edu

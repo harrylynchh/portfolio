@@ -10,22 +10,31 @@
 [data-theme='light'] {
   --bg: #FBFBF9;
   --ink: #101014;
-  --accent: #1E5C3A;
+  --accent: #5B6437;
   --muted: #6C7370;
   --hairline: #E3E7E3;
-  --swatch: #0F1512;
+  --swatch: #2E2216;
+  --grain-opacity: 0.45;
+  --accent-2: var(--brand-brown);
 }
 
 [data-theme='dark'] {
-  --bg: #0F1512;
+  --bg: #2E2216;
   --ink: #EFF2EE;
-  --accent: #6FBF8F;
-  --muted: #8B948D;
-  --hairline: #232B26;
+  --accent: #AAB56C;
+  --muted: #978E85;
+  --hairline: #3E3226;
   --swatch: #FBFBF9;
+  --grain-opacity: 0.12;
+  /* second accent is light-mode only; fall back to ink in dark (brown = the bg) */
+  --accent-2: var(--ink);
 }
 
 :root {
+  /* Brand brown — the light-mode 2nd accent (name, section titles, footer).
+     The dark-mode background is a separate, darker brown. */
+  --brand-brown: #3A2A1C;
+
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-body: 'Archivo', system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
@@ -55,6 +64,19 @@ body {
   justify-content: center;
   transition: background-color 150ms ease;
   position: relative;
+}
+
+/* Subtle paper grain — desaturated SVG fractal noise, fixed behind all
+   content (#root sits at z-index 1) so it stays pinned to the viewport like
+   paper stock under the type. Opacity is theme-controlled. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  opacity: var(--grain-opacity, 0.08);
 }
 
 #root {
@@ -146,6 +168,8 @@ p {
 
 .sectionTitle {
   margin: 0;
+  color: var(--accent-2);
+  text-transform: uppercase;
 }
 
 /* =========================================

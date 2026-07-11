@@ -13,23 +13,19 @@
 	padding: clamp(112px, 16vw, 176px) var(--gutter) 0;
 }
 
-.eyebrow {
-	font-family: var(--font-mono);
-	font-size: 13px;
-	letter-spacing: 0.06em;
-	text-transform: uppercase;
-	color: var(--muted);
-	margin-bottom: 28px;
-	display: block;
-	opacity: 1;
-	animation: heroFadeIn 420ms ease both;
-	animation-delay: 520ms;
+/* ── Name + photo row ────────────────────────────── */
+.nameRow {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: clamp(24px, 5vw, 72px);
 }
 
 /* ── Giant masked name ───────────────────────────── */
 .name {
 	display: flex;
 	flex-direction: column;
+	flex-shrink: 0;
 }
 
 .lineMask {
@@ -44,7 +40,7 @@
 	line-height: 0.9;
 	letter-spacing: -0.02em;
 	text-transform: uppercase;
-	color: var(--ink);
+	color: var(--accent-2);
 	transform: translateY(0);
 	animation: lineIn 620ms cubic-bezier(0.22, 0.7, 0.2, 1) both;
 }
@@ -61,12 +57,25 @@
 	animation-delay: 650ms;
 }
 
-/* ── Bottom-right meta block ─────────────────────── */
+.photo {
+	/* height tracks the two-line name block (line-height 0.9 × 2 = 1.8 × font-size) */
+	height: clamp(130px, 25.2vw, 288px);
+	width: clamp(130px, 25.2vw, 288px);
+	/* nudge in from the right edge so it floats toward center */
+	margin-right: clamp(8px, 5vw, 72px);
+	object-fit: cover;
+	border-radius: 50%;
+	flex-shrink: 0;
+	opacity: 1;
+	animation: heroFadeIn 620ms ease both;
+	animation-delay: 300ms;
+}
+
+/* ── Meta block: descriptor lines + links, tucked under the name ── */
 .bottom {
-	margin-top: auto;
-	padding-top: 56px;
+	margin-top: 34px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	opacity: 1;
 	animation: heroFadeIn 420ms ease both;
 	animation-delay: 520ms;
@@ -75,39 +84,32 @@
 .bottomRight {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
-	gap: 18px;
-}
-
-.photo {
-	width: 140px;
-	height: 140px;
-	object-fit: cover;
-	border-radius: 0;
+	align-items: flex-start;
+	gap: 22px;
 }
 
 .meta {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
-	gap: 4px;
+	align-items: flex-start;
+	gap: 6px;
 	color: var(--muted);
-	text-align: right;
+	text-align: left;
 }
 
 .meta span {
 	font-family: var(--font-mono);
-	font-size: 13px;
-	line-height: 1.6;
+	font-size: clamp(15px, 1.4vw, 17px);
+	line-height: 1.55;
 	font-variant-numeric: tabular-nums;
 }
 
 .metaLinks {
 	display: flex;
 	align-items: center;
-	gap: 16px;
+	gap: 20px;
 	font-family: var(--font-mono);
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .metaLinks a,
@@ -159,7 +161,7 @@
 /* ── Closing hairline ────────────────────────────── */
 .heroHairline {
 	border-top: 1px solid var(--hairline);
-	margin-top: 40px;
+	margin-top: auto;
 	opacity: 1;
 	animation: heroFadeIn 420ms ease both;
 	animation-delay: 520ms;
@@ -208,18 +210,17 @@
 	.hero {
 		padding-top: 128px;
 	}
+}
 
-	.bottom {
-		justify-content: flex-start;
-		padding-top: 40px;
+@media (width < 600px) {
+	.nameRow {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 28px;
 	}
 
-	.bottomRight {
-		align-items: flex-start;
-	}
-
-	.meta {
-		align-items: flex-start;
-		text-align: left;
+	.photo {
+		height: 190px;
+		width: 190px;
 	}
 }
