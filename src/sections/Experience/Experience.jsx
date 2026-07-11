@@ -1,9 +1,5 @@
 import styles from './ExperienceStyles.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import bloombergLogo from '../../assets/experience_logos/bloomberg.png';
-import crumforsterLogo from '../../assets/experience_logos/crum_and_forster.png';
-import launchLogo from '../../assets/experience_logos/launch.png';
-import airtightLogo from '../../assets/experience_logos/airtight.png';
 
 function renderBullet(text) {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -12,33 +8,42 @@ function renderBullet(text) {
   );
 }
 
+function renderCompany(name) {
+  const match = name.match(/^(.*?)\s(\(.*\))$/);
+  if (!match) return name;
+  return (
+    <>
+      {match[1]} <span className={styles.startup}>{match[2]}</span>
+    </>
+  );
+}
+
 const jobs = [
   {
     company: 'Bloomberg LP',
-    logo: bloombergLogo,
-    role: 'Software Engineering Intern',
+    role: 'Software Engineer Intern – Buy-Side Compliance',
     location: 'New York, NY',
-    date: 'Summer 2026',
-    upcoming: true,
-    bullets: [],
+    date: 'June 2026 – Aug 2026',
+    current: true,
+    bullets: [
+      'Owning the end-to-end rewrite of the **C++23** backend serving **VMGR**, Bloomberg\'s buy-side compliance-violation monitoring terminal function used by traders and auditors at some of the largest asset managers, hedge funds, and pension funds.',
+      'Moving all filtering, sorting, and pagination of **1M+ row** violation datasets server-side with **infinite scroll**, streaming real-time violation rows off a message queue to the display, and eliminating multi-minute load times.',
+    ],
   },
   {
     company: 'Crum & Forster',
-    logo: crumforsterLogo,
-    role: 'Data Science / Software Engineering Intern',
+    role: 'Software Engineer / Data Science Intern',
     location: 'Morristown, NJ',
     date: 'May 2025 – Nov 2025',
     bullets: [
-      'Independently delivered **15+ production projects** impacting **6 divisions**, consulting with non-technical stakeholders across Actuarial, Claims, Audit, Underwriting, Accounting, and Marketing.',
-      'Built Python **ETL pipelines** to ingest, clean, and load **50k+ rows** of Excel data monthly into **SQL Server** via T-SQL stored procedures.',
-      'Re-engineered a **statutory government filing model** from a 7-tab Excel workflow into a **6-parameter Python CLI** with parallelized SQL queries, producing a submission-ready workbook in **under 10 seconds** (from 1+ hours).',
-      'Shipped features across a **C#/.NET, SQL Server, and Angular** stack — RESTful API endpoints, front-end UI, and database optimizations.',
+      'Cut state filing prep from a **1+ hour** manual process to **under 10 minutes** by building a Python tool that runs SQL queries in parallel, computes the actuarial figures, and auto-formats a submission-ready exhibit.',
+      'Surfaced the strongest predictors of **claim frequency and severity** by building a Python (**pandas**, **Seaborn**) framework for univariate and bivariate analysis of **500K+ claim records**, informing variable selection for a downstream pricing model.',
+      'Built a monthly Python **ETL pipeline** that loads **50K+ rows** of premium and claim data into a structured **SQL Server** schema, deduplicating records, validating data quality, and normalizing column names with regex.',
     ],
   },
   {
     company: 'Launch (Startup)',
-    logo: launchLogo,
-    role: 'Full Stack Software Development Intern',
+    role: 'Full Stack Software Engineer Intern',
     location: 'Medford, MA',
     date: 'Jan 2025 – May 2025',
     bullets: [
@@ -47,41 +52,25 @@ const jobs = [
       'Developed a drag-and-drop **React** interface for end-users to customize AI-generated websites, rearranging and editing components in real time.',
     ],
   },
-  {
-    company: 'Airtight Storage Systems',
-    logo: airtightLogo,
-    role: 'Freelance Software Development',
-    location: 'Manalapan, NJ',
-    date: 'May 2024 – Oct 2024',
-    bullets: [
-      'Designed, developed, and maintained a **full-stack web app** for internal inventory and sale management, tracking **500+ containers/month** and cutting manual documentation time by **65%**.',
-      'Implemented **JWT authentication**, permission-based accounts, automated client emails, and industry-specific invoice generation; hosted live on **AWS EC2 & S3** for day-to-day corporate use.',
-    ],
-  },
 ];
 
-function TimelineEntry({ job, index }) {
+function JobRow({ job, index }) {
   const ref = useScrollReveal();
   return (
-    <div
+    <article
       ref={ref}
-      className={`reveal ${styles.entry}`}
-      style={{ '--delay': `${index * 120}ms` }}
+      className={`reveal ${styles.job}`}
+      style={{ '--delay': `${index * 80}ms` }}
     >
-      <div className={styles.dotCol}>
-        <div className={styles.dot} />
-        <div className={styles.line} />
+      <div className={styles.dateCol}>
+        <span className={`${styles.date} nums`}>{job.date}</span>
+        {job.current && <span className={styles.current}>Current</span>}
       </div>
-      <div className={styles.content}>
-        <div className={styles.topRow}>
-          <div className={styles.companyGroup}>
-            <img src={job.logo} alt={`${job.company} logo`} className={styles.logo} />
-            <h2 className={styles.company}>{job.company}</h2>
-            {job.upcoming && <span className={styles.incomingBadge}>Incoming</span>}
-          </div>
-          <span className={styles.date}>{job.date}</span>
+      <div className={styles.body}>
+        <div className={styles.top}>
+          <h2 className={styles.company}>{renderCompany(job.company)}</h2>
         </div>
-        <div className={styles.subRow}>
+        <div className={styles.sub}>
           <span className={styles.role}>{job.role}</span>
           <span className={styles.location}>{job.location}</span>
         </div>
@@ -93,7 +82,7 @@ function TimelineEntry({ job, index }) {
           </ul>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -101,13 +90,13 @@ function Experience() {
   const headerRef = useScrollReveal();
   return (
     <section id="experience" className={styles.container}>
-      <div ref={headerRef} className="reveal">
+      <div ref={headerRef} className="reveal sectionHead">
         <p className="sectionLabel">Where I&apos;ve Worked</p>
         <h1 className="sectionTitle">Experience</h1>
       </div>
-      <div className={styles.timeline}>
+      <div className={styles.jobList}>
         {jobs.map((job, i) => (
-          <TimelineEntry key={job.company} job={job} index={i} />
+          <JobRow key={job.company} job={job} index={i} />
         ))}
       </div>
     </section>

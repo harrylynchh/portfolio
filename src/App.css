@@ -1,47 +1,47 @@
 /* =========================================
    THEME TOKENS
+   Quiet Swiss — paper white + forest green,
+   strict inversion for dark. No distinct
+   "surface" color; everything sits on --bg.
+   --swatch is the theme toggle's preview
+   square: the OTHER mode's background.
    ========================================= */
 
-[data-theme='dark'] {
-  --bg: #0c0c12;
-  --bg-rgb: 12, 12, 18;
-  --surface: #13131c;
-  --accent: #5b8aff;
-  --accent-muted: rgba(91, 138, 255, 0.1);
-  --accent-border: rgba(91, 138, 255, 0.28);
-  --text: #e0e0ef;
-  --text-muted: #696980;
-  --border: #1e1e2c;
-
-  /* hero/legacy compat */
-  --background-color: #0c0c12;
-  --btn-color: #5b8aff;
-  --btn-text-color: #0c0c12;
-  --project-card-bg: transparent;
-  --text-color: #e0e0ef;
-  --form-text-color: #696980;
-  --footer-text-color: #696980;
+[data-theme='light'] {
+  --bg: #FBFBF9;
+  --ink: #101014;
+  --accent: #5B6437;
+  --muted: #6C7370;
+  --hairline: #E3E7E3;
+  --swatch: #2E2216;
+  --grain-opacity: 0.45;
+  --accent-2: var(--brand-brown);
 }
 
-[data-theme='light'] {
-  --bg: #f4f4f9;
-  --bg-rgb: 244, 244, 249;
-  --surface: #ffffff;
-  --accent: #2d5fe0;
-  --accent-muted: rgba(45, 95, 224, 0.08);
-  --accent-border: rgba(45, 95, 224, 0.25);
-  --text: #0c0c18;
-  --text-muted: #72728a;
-  --border: #dcdcec;
+[data-theme='dark'] {
+  --bg: #2E2216;
+  --ink: #EFF2EE;
+  --accent: #AAB56C;
+  --muted: #978E85;
+  --hairline: #3E3226;
+  --swatch: #FBFBF9;
+  --grain-opacity: 0.12;
+  /* second accent is light-mode only; fall back to ink in dark (brown = the bg) */
+  --accent-2: var(--ink);
+}
 
-  /* hero/legacy compat */
-  --background-color: #f4f4f9;
-  --btn-color: #2d5fe0;
-  --btn-text-color: #ffffff;
-  --project-card-bg: #ffffff;
-  --text-color: #0c0c18;
-  --form-text-color: #72728a;
-  --footer-text-color: #72728a;
+:root {
+  /* Brand brown — the light-mode 2nd accent (name, section titles, footer).
+     The dark-mode background is a separate, darker brown. */
+  --brand-brown: #3A2A1C;
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  --maxw: 1200px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --section-pad: clamp(56px, 9vw, 128px);
 }
 
 /* =========================================
@@ -52,39 +52,43 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg);
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  transition: background-color 250ms ease;
+  transition: background-color 150ms ease;
   position: relative;
 }
 
-/* Site-wide dot grid */
+/* Subtle paper grain — desaturated SVG fractal noise, fixed behind all
+   content (#root sits at z-index 1) so it stays pinned to the viewport like
+   paper stock under the type. Opacity is theme-controlled. */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(var(--border) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.65;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  opacity: var(--grain-opacity, 0.08);
 }
 
 #root {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--maxw);
   display: flex;
   flex-direction: column;
-  padding-top: 56px; /* navbar height */
   position: relative;
   z-index: 1;
 }
 
-/* ensure sections don't hide behind fixed navbar on anchor scroll */
+/* ensure sections don't hide behind the fixed navbar on anchor scroll */
 #hero,
 #experience,
 #projects,
@@ -102,113 +106,95 @@ h3,
 p {
   margin: 0;
   padding: 0;
-  color: var(--text);
+  color: var(--ink);
 }
 
 h1 {
-  font-family: 'Rubik', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
-  font-size: 32px;
-  text-transform: uppercase;
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: -0.02em;
 }
 
 h2,
 h3 {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 20px;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-weight: 700;
 }
 
 p {
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
-@media (width >= 800px) {
-  h1 {
-    font-size: 40px;
-  }
-  h2,
-  h3 {
-    font-size: 24px;
-  }
-  p {
-    font-size: 20px;
-  }
-}
-
-@media (width >= 1400px) {
-  h1 {
-    font-size: 48px;
-  }
+.nums,
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 /* =========================================
    SCROLL REVEAL
+   Plain quick fade only — no translateY slide.
    ========================================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition: opacity 300ms ease;
   transition-delay: var(--delay, 0ms);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* =========================================
    SHARED UI
    ========================================= */
 
+.sectionHead {
+  margin-bottom: clamp(32px, 6vw, 64px);
+}
+
 .sectionLabel {
-  font-family: 'Roboto Mono', monospace !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.2em !important;
+  display: block;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  color: var(--accent) !important;
+  color: var(--muted) !important;
   margin-bottom: 10px;
 }
 
 .sectionTitle {
-  margin-bottom: 52px;
+  margin: 0;
+  color: var(--accent-2);
+  text-transform: uppercase;
 }
 
-.tag {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--accent);
-  background: var(--accent-muted);
-  border: 1px solid var(--accent-border);
-  border-radius: 4px;
-  padding: 3px 9px;
-  white-space: nowrap;
-  display: inline-block;
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 0 24px;
-}
-
-@media (width >= 800px) {
-  .divider {
-    margin: 0 60px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
   }
-}
 
-@media (width >= 1400px) {
-  .divider {
-    margin: 0 80px;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
-}
 
-.hover {
-  cursor: pointer;
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
