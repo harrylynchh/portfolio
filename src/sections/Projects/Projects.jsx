@@ -4,7 +4,7 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 const projects = [
   {
     name: 'JumBuddy',
-    award: 'JumboHack 2026 — Overall & Track Winner',
+    award: 'JumboHack 2026 — Overall Winner & Education Track',
     tech: ['React', 'TypeScript', 'Python', 'PostgreSQL', 'Supabase', 'VSCode'],
     description:
       'VS Code extension capturing keystroke-level edit history with per-symbol metrics (thrash, churn, time-on-function). Flask API ingests editor flushes and pipes diffs into an LLM for qualitative insights. Backed by PostgreSQL via Supabase with a React professor dashboard featuring per-student analytics and a code-replay timeline.',

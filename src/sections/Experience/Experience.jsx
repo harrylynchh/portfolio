@@ -21,13 +21,14 @@ function renderCompany(name) {
 const jobs = [
   {
     company: 'Bloomberg LP',
-    role: 'Software Engineer Intern – Buy-Side Compliance',
+    role: 'Software Engineer Intern – Buy-Side Compliance, Enterprise Products',
     location: 'New York, NY',
     date: 'June 2026 – Aug 2026',
     current: true,
     bullets: [
-      'Owning the end-to-end rewrite of the **C++23** backend serving **VMGR**, Bloomberg\'s buy-side compliance-violation monitoring terminal function used by traders and auditors at some of the largest asset managers, hedge funds, and pension funds.',
-      'Moving all filtering, sorting, and pagination of **1M+ row** violation datasets server-side with **infinite scroll**, streaming real-time violation rows off a message queue to the display, and eliminating multi-minute load times.',
+      'Owning the rewrite of the violation query/load path in the **C++23** backend of **VMGR**, Bloomberg\'s buy-side compliance-violation monitoring terminal function used by traders and auditors at major asset managers, hedge funds, and pension funds.',
+      'Pushing filtering of **100K+ row** violation datasets server-side and merging real-time violation rows from a message queue into the display, eliminating minute-long load times from bulk client-side loads.',
+      'Building a **multi-producer/multi-consumer queue** and **thread pool** that move database writes off the hot path.',
     ],
   },
   {
@@ -36,8 +37,8 @@ const jobs = [
     location: 'Morristown, NJ',
     date: 'May 2025 – Nov 2025',
     bullets: [
-      'Cut state filing prep from a **1+ hour** manual process to **under 10 minutes** by building a Python tool that runs SQL queries in parallel, computes the actuarial figures, and auto-formats a submission-ready exhibit.',
-      'Surfaced the strongest predictors of **claim frequency and severity** by building a Python (**pandas**, **Seaborn**) framework for univariate and bivariate analysis of **500K+ claim records**, informing variable selection for a downstream pricing model.',
+      'Cut state filing prep from a **1+ hour** manual process to **under 10 minutes** by building a Python tool that runs SQL queries in parallel, computes the actuarial figures, and auto-formats a regulator-ready exhibit.',
+      'Surfaced the strongest predictors of **claim frequency and severity** by building a Python (**pandas**) framework for univariate and bivariate analysis of **500K+ claim records**, informing variable selection for a pricing model.',
       'Built a monthly Python **ETL pipeline** that loads **50K+ rows** of premium and claim data into a structured **SQL Server** schema, deduplicating records, validating data quality, and normalizing column names with regex.',
     ],
   },
